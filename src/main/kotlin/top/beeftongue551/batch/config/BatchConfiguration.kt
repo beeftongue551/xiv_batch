@@ -24,14 +24,15 @@ class BatchConfiguration {
 
     @Autowired
     lateinit var itemTasklet: ItemTasklet
-//    @Autowired
-//    lateinit var recipeTasklet: RecipeTasklet
+    @Autowired
+    lateinit var recipeTasklet: RecipeTasklet
 
     @Bean
     fun csvJob(): Job {
         val dateAndTime: LocalDateTime = LocalDateTime.now()
-        return jobBuilderFactory.get("csvJob$dateAndTime")
+        return jobBuilderFactory.get("csvJob: $dateAndTime")
             .flow(itemStep())
+            .next(recipeStep())
             .end().build()
     }
 
@@ -45,7 +46,7 @@ class BatchConfiguration {
     @Bean
     fun recipeStep(): Step {
         return stepBuilderFactory.get("recipeStep")
-            .tasklet(RecipeTasklet())
+            .tasklet(recipeTasklet)
             .build()
     }
 }

@@ -28,8 +28,9 @@ dependencies {
 	implementation("net.sf.supercsv:super-csv:2.4.0")
 	implementation("com.github.mygreen:super-csv-annotation:2.2")
 	implementation("com.orangesignal:orangesignal-csv:2.2.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
 
-	runtimeOnly("mysql:mysql-connector-java")
+    runtimeOnly("mysql:mysql-connector-java")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.batch:spring-batch-test")
 }
